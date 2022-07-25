@@ -1,6 +1,6 @@
 package main
 
-import "github.com/Michelprogram/mongo-go"
+import "github.com/Michelprogram/mongo-cli/mongogo"
 
 func main() {
 	mongogo.Test()
