@@ -1,0 +1,9 @@
+package //Your package name
+
+type {{ .Name }} struct{
+
+    {{ range .Attributes }}
+        {{ .Name }} {{ .Type}} `json:"{{.ToJsonFormat}}" bson:"{{.ToJsonFormat}}"`
+    {{ end }}
+
+}
