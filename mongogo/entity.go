@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 	"text/template"
 )
 
@@ -15,6 +16,9 @@ type Entity struct {
 }
 
 func NewEntity(name string) *Entity {
+
+	name = strings.ToUpper(string(name[0])) + name[1:]
+
 	return &Entity{
 		Name:       name,
 		Attributes: make([]*Attributes, 0),
@@ -42,7 +46,7 @@ func (e Entity) GenerateTemplate() error {
 		return err
 	}
 
-	template, err := template.ParseFiles(templateName)
+	template, err := template.New(templateName).Parse(GetTemplate())
 
 	if err != nil {
 		return err
