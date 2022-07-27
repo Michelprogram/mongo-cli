@@ -1,18 +1,18 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/Michelprogram/mongo-cli/mongogo"
 )
 
 func main() {
 
-	//e := AskAttributes()
+	e := mongogo.AskAttributes()
 
-	e := NewEntity("Person")
+	err := e.GenerateTemplate()
 
-	e.PushAttributes(NewAttributes("age", "int"))
-	e.PushAttributes(NewAttributes("numero de telephone", "string"))
-	e.PushAttributes(NewAttributes("BeeKeeper", "Beekeeper"))
-
-	e.GenerateTemplate()
+	if err != nil {
+		fmt.Println("Err : ", err)
+	}
 }

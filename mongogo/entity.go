@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"os"
 	"text/template"
-	Attributes "github.com/MichelProgra"
 )
 
 var name string
@@ -29,8 +28,14 @@ func (e *Entity) PushAttributes(attributes *Attributes) {
 //Play with Template
 func (e Entity) GenerateTemplate() error {
 
-	name := "./generates/entity_" + e.Name + ".go"
-	templateName := "./templates/entity.tmpl"
+	path, err := os.Getwd()
+
+	if err != nil {
+		return err
+	}
+
+	name := path + "/entity_" + e.Name + ".go"
+	templateName := "template_entity.tmpl"
 
 	file, err := os.Create(name)
 	if err != nil {
@@ -95,7 +100,7 @@ func init() {
 	flag.Parse()
 
 	if name == "" {
-		fmt.Println("You should specifie -name")
+		fmt.Println("You should specifie flag -name.")
 		os.Exit(1)
 	}
 
