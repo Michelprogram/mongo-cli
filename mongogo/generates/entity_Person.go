@@ -7,5 +7,7 @@ type Person struct{
     
         NumeroDeTelephone string `json:"numero_de_telephone" bson:"numero_de_telephone"`
     
+        Beekeeper *Beekeeper `json:"beekeeper" bson:"beekeeper"`
+    
 
 }
